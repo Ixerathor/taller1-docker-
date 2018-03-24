@@ -1,0 +1,85 @@
+PS C:\WINDOWS\system32> docker run --name mysql -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=12345s mysql
+b8894837627077682032f1656ff9eb8c9e22ba42d2b4a8ad0ae26171840635f5
+PS C:\WINDOWS\system32> docker run --name wordpress -d -p 8080:80 --link mysql:mysql wordpress
+2b7b6eda4f4894606c282b1c89248cb3b27b6f0ba49db7cb431a8aa3f323005c
+PS C:\WINDOWS\system32> docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+2b7b6eda4f48        wordpress           "docker-entrypoint.s…"   11 seconds ago      Up 5 seconds        0.0.0.0:8080->80/tcp     wordpress
+b88948376270        mysql               "docker-entrypoint.s…"   40 seconds ago      Up 38 seconds       0.0.0.0:3306->3306/tcp   mysql
+PS C:\WINDOWS\system32> docker commit b88948376270 anthonybarahonav/mysql_wordpress
+sha256:42dcddae8acca561094f5076862888a1f897c1c33280731fbda047515e843138
+PS C:\WINDOWS\system32> docker push anthonybarahonav/mysql_wordpress
+The push refers to repository [docker.io/anthonybarahonav/mysql_wordpress]
+73e4873591c4: Preparing
+12ea28f10d69: Preparing
+400836ab4664: Preparing
+17d36ba94219: Preparing
+d7758e0ab2b0: Preparing
+921bf5c178ac: Waiting
+3cf1630a511d: Waiting
+b80c494a1fdc: Waiting
+7b2001677ac9: Waiting
+8b452d78b126: Waiting
+292c1ee413d0: Waiting
+014cf8bfcb2d: Waiting
+denied: requested access to the resource is denied
+PS C:\WINDOWS\system32> docker images
+REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE
+anthonybarahonav/mysql_wordpress   latest              42dcddae8acc        44 seconds ago      374MB
+php                                7.0-fpm             99b3a8aba455        2 weeks ago         380MB
+mysql                              latest              5d4d51c57ea8        3 weeks ago         374MB
+nginx                              latest              e548f1a579cf        4 weeks ago         109MB
+wordpress                          latest              80a6fca6cc6a        4 weeks ago         407MB
+php                                7                   21c3582549e6        5 weeks ago         352MB
+postgres                           latest              c12289de6f88        5 weeks ago         288MB
+httpd                              latest              01154c38b473        5 weeks ago         177MB
+docker4w/nsenter-dockerd           latest              cae870735e91        4 months ago        187kB
+PS C:\WINDOWS\system32> docker login -u antoinebarahonav -p Eosp4def
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+Login Succeeded
+PS C:\WINDOWS\system32> docker push anthonybarahonav/mysql_wordpress
+The push refers to repository [docker.io/anthonybarahonav/mysql_wordpress]
+73e4873591c4: Preparing
+12ea28f10d69: Preparing
+400836ab4664: Preparing
+17d36ba94219: Preparing
+d7758e0ab2b0: Preparing
+921bf5c178ac: Waiting
+3cf1630a511d: Waiting
+b80c494a1fdc: Waiting
+7b2001677ac9: Waiting
+8b452d78b126: Waiting
+292c1ee413d0: Waiting
+014cf8bfcb2d: Waiting
+denied: requested access to the resource is denied
+PS C:\WINDOWS\system32> docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+2b7b6eda4f48        wordpress           "docker-entrypoint.s…"   7 minutes ago       Up 7 minutes        0.0.0.0:8080->80/tcp     wordpress
+b88948376270        mysql               "docker-entrypoint.s…"   7 minutes ago       Up 7 minutes        0.0.0.0:3306->3306/tcp   mysql
+PS C:\WINDOWS\system32> docker images
+REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE
+anthonybarahonav/mysql_wordpress   latest              42dcddae8acc        6 minutes ago       374MB
+php                                7.0-fpm             99b3a8aba455        2 weeks ago         380MB
+mysql                              latest              5d4d51c57ea8        3 weeks ago         374MB
+nginx                              latest              e548f1a579cf        4 weeks ago         109MB
+wordpress                          latest              80a6fca6cc6a        4 weeks ago         407MB
+php                                7                   21c3582549e6        5 weeks ago         352MB
+postgres                           latest              c12289de6f88        5 weeks ago         288MB
+httpd                              latest              01154c38b473        5 weeks ago         177MB
+docker4w/nsenter-dockerd           latest              cae870735e91        4 months ago        187kB
+PS C:\WINDOWS\system32> docker push anthonybarahonav/mysql_wordpress
+The push refers to repository [docker.io/anthonybarahonav/mysql_wordpress]
+73e4873591c4: Preparing
+12ea28f10d69: Preparing
+400836ab4664: Preparing
+17d36ba94219: Preparing
+d7758e0ab2b0: Preparing
+921bf5c178ac: Waiting
+3cf1630a511d: Waiting
+b80c494a1fdc: Waiting
+7b2001677ac9: Waiting
+8b452d78b126: Waiting
+292c1ee413d0: Waiting
+014cf8bfcb2d: Waiting
+denied: requested access to the resource is denied
+PS C:\WINDOWS\system32>
